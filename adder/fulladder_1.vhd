@@ -9,6 +9,7 @@ architecture synth of fulladder_1 is
 	signal p, g: STD_LOGIC;
 	
 begin
+	--Variables internas
 	--p y g permiten reducir el procedimiento matemático de las salidas
 	p <= a xor b;
 	

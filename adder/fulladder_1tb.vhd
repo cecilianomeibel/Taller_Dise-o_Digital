@@ -39,8 +39,8 @@ begin
 	entry_cases: process
 	begin
 	
-		--Espera de 100 ns
-		wait for 100 ns;
+		--Espera de 10 ns
+		wait for 10 ns;
 	
 		--Casos de entrada
 		Cin <= '0';
