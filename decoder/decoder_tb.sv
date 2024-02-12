@@ -42,7 +42,7 @@ module decoder_tb();
             endcase
         end
         $display("El Testbench finalizo correctamente");
-        $finish; // Termina simulacion
+        //$finish; // Termina simulacion
     end
 
 endmodule
