@@ -1,0 +1,5 @@
+module counter_asynch_tb();
+
+logic clk, reset;
+
+reg [7:0] count;
