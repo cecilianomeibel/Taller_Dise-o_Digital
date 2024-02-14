@@ -1,24 +1,28 @@
-module counter_asynch_tb();
+module counter_tb();
 	
-	parameter N = 8;
+	// Numero de bits parametrizable
+	
+	parameter N = 4;
 	
 	//Inputs
 	logic clk, reset;
 	
 	//outputs
-	logic [N-1] count;
+	logic [N-1:0] count;
 	
 	
-	//intantiate (test)
+	//instantiate (test)
 	
-	counter_asynch #(8) counter_2bit(clk,reset,count);
+	counter #(N) counter_2bit(clk,reset,count);
 	
 	
 	// señal de reloj
 	
 	initial begin
 	
-		forever #5 clk = ¬clk;
+		clk = 1'b0;
+	
+		forever #5 clk = ~clk;
 		
 	end
 	
@@ -28,22 +32,26 @@ module counter_asynch_tb();
 		begin
 		
 			// Inicialización de las señales
-			clk = 0;
-			reset = 0;
-			
-			// se activa el reset para reiniciar contador
-			#40
 			reset = 1;
 			
+			// se activa el reset para reiniciar contador
+			#10
+			reset = 0;
+			
 			// se desactiva el reset para que el contador incremente por un tiempo
-			#40
+			#60
+			reset = 1;
+			
+			#10
 			reset = 0;
 			
 			#100
 			reset = 1;
 			
+			$finish;
+		
 		end
 		
-		$finish;
-		
-endmodule
+endmodule 
+
+
