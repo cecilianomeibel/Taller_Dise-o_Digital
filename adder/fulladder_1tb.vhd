@@ -7,7 +7,7 @@ end entity;
 architecture sim of fulladder_1tb is
 	component fulladder_1
 		port( a, b, Cin: in STD_LOGIC;
-				s, Cout: out STD_LOGIC);
+				sum1, Cout: out STD_LOGIC);
 	end component;
 	
 	--Instanciando
@@ -18,7 +18,7 @@ architecture sim of fulladder_1tb is
 	signal Cin: STD_LOGIC:='0';
 	
 	--Salidas
-	signal s: STD_LOGIC;
+	signal sum1: STD_LOGIC;
 	signal Cout: STD_LOGIC;
 	
 begin
@@ -30,7 +30,7 @@ begin
 		a => a,
 		b => b,
 		Cin => Cin,
-		s => s,
+		sum1 => sum1,
 		Cout => Cout
 	);
 	

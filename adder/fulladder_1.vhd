@@ -2,7 +2,7 @@ library IEEE; use IEEE.STD_LOGIC_1164.all;
 
 entity fulladder_1 is
 	port(a, b, Cin: in STD_LOGIC;
-			s, Cout: out STD_LOGIC);
+			sum1, Cout: out STD_LOGIC);
 end;
 
 architecture synth of fulladder_1 is
@@ -16,7 +16,7 @@ begin
 	g <= a and b;
 	
 	--Salidas
-	s <= p xor Cin;
+	sum1 <= p xor Cin;
 	
 	Cout <= g or (p and Cin);
 	

@@ -69,5 +69,27 @@ set_global_assignment -name EDA_TEST_BENCH_NAME fulladder_4tb -section_id eda_si
 set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id fulladder_4tb
 set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME fulladder_4tb -section_id fulladder_4tb
 set_global_assignment -name EDA_TEST_BENCH_FILE fulladder_4tb.vhd -section_id fulladder_4tb
-set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
 set_global_assignment -name VHDL_FILE disp7seg.vhd
+set_location_assignment PIN_AB12 -to a[0]
+set_location_assignment PIN_AC12 -to a[1]
+set_location_assignment PIN_AF9 -to a[2]
+set_location_assignment PIN_AF10 -to a[3]
+set_location_assignment PIN_AD12 -to b[0]
+set_location_assignment PIN_AE11 -to b[1]
+set_location_assignment PIN_AC9 -to b[2]
+set_location_assignment PIN_AD10 -to b[3]
+set_location_assignment PIN_AH28 -to sum4[0]
+set_location_assignment PIN_AG28 -to sum4[1]
+set_location_assignment PIN_AF28 -to sum4[2]
+set_location_assignment PIN_AG27 -to sum4[3]
+set_location_assignment PIN_AE28 -to sum4[4]
+set_location_assignment PIN_AE27 -to sum4[5]
+set_location_assignment PIN_AE26 -to sum4[6]
+set_location_assignment PIN_AD27 -to Cout[0]
+set_location_assignment PIN_AF30 -to Cout[1]
+set_location_assignment PIN_AF29 -to Cout[2]
+set_location_assignment PIN_AG30 -to Cout[3]
+set_location_assignment PIN_AH30 -to Cout[4]
+set_location_assignment PIN_AH29 -to Cout[5]
+set_location_assignment PIN_AJ29 -to Cout[6]
+set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

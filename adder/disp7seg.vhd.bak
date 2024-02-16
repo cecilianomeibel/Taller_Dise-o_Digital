@@ -3,7 +3,7 @@ use ieee.std_logic_1164.all;
 
 entity disp7seg is
     Port ( 
-        sum4 : in  STD_LOGIC_VECTOR (3 downto 0);   -- Entrada de 4 bits que representa un número en binario
+        s : in  STD_LOGIC_VECTOR (3 downto 0);   -- Entrada de 4 bits que representa un número en binario
         seg : out  STD_LOGIC_VECTOR (6 downto 0) -- Salida para el display de 7 segmentos
     );
 end disp7seg;
@@ -12,10 +12,10 @@ architecture Behavioral of disp7seg is
 
 begin
 
-process (sum4)
+process (s)
 BEGIN
-    -- Enciende el segmento de 7 segmentos correspondiente para cada valor de entrada
-    case sum4 is
+    -- Selecciona el segmento de 7 segmentos correspondiente para cada valor de entrada
+    case s is
         when "0000"=> seg <="0000001";  -- '0'
         when "0001"=> seg <="1001111";  -- '1'
         when "0010"=> seg <="0010010";  -- '2'
