@@ -6,10 +6,13 @@ module decoder_tb();
     //Outputs
     logic [5:0] bcd;
     
+	 logic [6:0] seg;
+	 
     //Se instancia el modulo decoder
     decoder dut(
         .binary(binary),
-        .bcd(bcd)
+        .bcd(bcd),
+		  .seg(seg)
     );
     
     
