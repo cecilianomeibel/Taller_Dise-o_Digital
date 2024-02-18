@@ -2,18 +2,18 @@ module counter_tb();
 	
 	// Numero de bits parametrizable
 	
-	parameter N = 4;
+	parameter N = 6;
 	
 	//Inputs
 	logic clk, reset;
 	
 	//outputs
 	logic [N-1:0] count;
-	
+	logic [N-1:0]max = 6'b010100;
 	
 	//instantiate (test)
 	
-	counter #(N) counter_2bit(clk,reset,count);
+	counter #(N) counter_2bit(clk,reset,max,count);
 	
 	
 	// señal de reloj

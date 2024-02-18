@@ -1,5 +1,5 @@
 
-module counter #(parameter N = 8)(input logic clk, reset, output logic [N-1:0] count);
+module counter #(parameter N = 8)(input logic clk, reset,input logic [N-1:0] max, output logic [N-1:0] count);
 
 
 	logic [N-1:0] count_out;
@@ -11,8 +11,13 @@ module counter #(parameter N = 8)(input logic clk, reset, output logic [N-1:0] c
 				count_out <= '0;
 			end
 			
-			else if (count_out =='1)
+			else if (count_out =='1) begin
 				count_out <= '0;
+			end 
+			
+			else if (count_out == max) begin
+				count_out <= '0;
+			end
 				
 			else begin
 				count_out <= count_out + 1'b1;
