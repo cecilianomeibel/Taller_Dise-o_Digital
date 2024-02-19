@@ -1,3 +1,4 @@
+//`timescale 1ms/10ns
 module counter_display_tb();
 
 	logic clk, reset, increment, decrease;
@@ -17,7 +18,7 @@ module counter_display_tb();
 		display_one_out = '0;
 		display_two_out = '0;
 		
-		#500
+		#100
 		
 		$finish;
 		
