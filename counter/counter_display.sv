@@ -36,8 +36,8 @@ module counter_display(input logic clk, reset, increment,decrease, output logic 
 	// Inicio del reloj
 	
 	always @(posedge clk)
-	
-		begin
+				
+		begin 
 		
 		counter <= counter + 1;
 		
@@ -65,21 +65,18 @@ module counter_display(input logic clk, reset, increment,decrease, output logic 
 		else
 			begin	
 			
-			if(digit_one == 4'b1001)
-				
+			if(digit_one == 4'b1001) begin
+					
 				{digit_one, ID_digit} <= {'0,1'b0};
 				{digit_two,ID_digit} <= {digit_two + 1'b1, 1'b1};
 				//release_display_out <= release_display_out;
+				end
 				
-							
-			else
-				
+			else begin
 				{digit_one,ID_digit} <= {digit_one + 1'b1, 1'b0};
 				//release_display_out <=~release_display_out;
-				
-				
+				end
 			end
-		
 		end
 		
 		
@@ -125,7 +122,7 @@ module select_digit(input logic clk,
 	input logic identif, 
 	output logic [3:0] digit_out);
 	
-		always @(*)
+		always @(*)//(D_one or D_two)
 			
 			begin
 			

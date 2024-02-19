@@ -11,6 +11,7 @@ module counter_display_tb();
 		clk = 0;
 		
 		forever #100 clk = ~clk;
+		//clk = ~clk;
 		
 		reset = 0;
 		increment = 0;
