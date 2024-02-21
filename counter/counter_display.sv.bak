@@ -1,1 +1,0 @@
-module counter_display(input logic clk, reset,start, increment,decrease

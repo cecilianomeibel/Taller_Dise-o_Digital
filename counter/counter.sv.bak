@@ -1,7 +1,0 @@
-//module N_bits #(parameter width = 8)(input logic )
-
-module counter_asynch #(parameter width=8)(clk,rst,count);
-
-input clk, reset;
-
-output reg [N-1:0] count;
