@@ -1,6 +1,6 @@
 module Contador_tb;
 	
-	parameter N = 6;
+	parameter N = 6; // Parametro para cambio de bits del contador
     reg clk;
     reg reset;
     reg [N-1:0] number;

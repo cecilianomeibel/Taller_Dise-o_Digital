@@ -10,7 +10,8 @@ module Contador #(parameter N = 6)(
     initial begin
         contador = number;
     end
-
+	
+	// Bloque para decrementar contador
     always @(posedge clk, negedge reset) begin
         if (!reset)
             contador <= number;
@@ -18,6 +19,7 @@ module Contador #(parameter N = 6)(
             contador <= contador - 6'b000001;
     end
 	
+	// Segmentos de los digitos de mayor cambio o mayores
     always @(contador) begin
         case (contador[3:0])
             4'h0: segments_1 = 7'b1000000; // 0
@@ -41,11 +43,13 @@ module Contador #(parameter N = 6)(
 
 	// Se obtienen los digitos más pequeños de los numeros hexadecimales
     always @(contador) begin
-        case (contador[N-1:4]) 
+        case (contador[N-1:4]) // Se toman
+		
             2'b00: segments_2 = 7'b1000000; // 0
             2'b01: segments_2 = 7'b1111001; // 1
             2'b10: segments_2 = 7'b0100100; // 2
             2'b11: segments_2 = 7'b0110000; // 3
+			
         endcase
     end
 
