@@ -1,43 +1,36 @@
 module fullAdder4_tb;
 
-    // Parámetros
-    parameter CLK_PERIOD = 10ns; // Periodo de reloj en unidades de tiempo
-	 parameter WIDTH = 4;
+  // Parámetros
+  parameter N = 4; // Tamaño del sumador
 
-    // Declaraciones de señales
-    logic [WIDTH-1:0] a, b;   // Entradas a y b
-    logic Cin;          // Entrada de acarreo de entrada
-    logic [WIDTH-1:0] sum;    // Salida de suma de 4 bits
-    logic Cout;         // Salida de acarreo de salida
+  // Definición de señales
+  logic [N-1:0] a, b;
+  logic Cin;
+  logic [N-1:0] sum;
+  logic Cout;
 
-    // Instancia del módulo bajo prueba
-    fullAdder4 #(.width(WIDTH)) dut (
-        .a(a),
-        .b(b),
-        .Cin(Cin),
-        .sum(sum),
-        .Cout(Cout)
-    );
+  // Instancia del módulo bajo prueba
+  fullAdder4 #(N) dut (
+      .a(a),
+      .b(b),
+      .Cin(Cin),
+      .sum(sum),
+      .Cout(Cout)
+  );
 
-    // Generación de estímulos
-    initial begin
-	 
-	     // Caso de prueba 1
-	     a = 4'b0000;
-        b = 4'b0001;
-        Cin = 1'b0;
-		  #CLK_PERIOD ;
-        // Caso de prueba 2
-        a = 4'b0010;
-        b = 4'b0101;
-        Cin = 1'b0;
-        #CLK_PERIOD ; // Esperar un tiempo
-        // Caso de prueba 3
-        a = 4'b1111;
-        b = 4'b1111;
-        Cin = 1'b0;
-        #CLK_PERIOD ; // Esperar un tiempo   
-		 
-    end
+  // Inicialización de señales
+  initial begin
+      // Establecer valores de entrada
+      a = 4'b0011;
+      b = 4'b0101;
+      Cin = 1'b0;
+      #10; 
+
+      // Establecer nuevos valores de entrada
+      a = 4'b0111;
+      b = 4'b1101;
+      Cin = 1'b0;
+      #10; // Esperar un tiempo para la propagación
+  end
 
 endmodule
