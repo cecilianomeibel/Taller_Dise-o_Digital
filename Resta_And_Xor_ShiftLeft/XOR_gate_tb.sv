@@ -1,4 +1,5 @@
-module AND_gate_tb();
+
+module XOR_gate_tb();
 	
 	parameter N = 4;
 	
@@ -8,7 +9,7 @@ module AND_gate_tb();
 	logic sign;
 	
 	
-	AND_gate #(N) And_tb(.A_num(A_num), .B_num(B_num), .result(result), .sign(sign));
+	XOR_gate #(N) Xor_tb(.A_num(A_num), .B_num(B_num), .result(result), .sign(sign));
 	
 	
 	initial begin
@@ -36,6 +37,7 @@ module AND_gate_tb();
 		$finish;
 	
 	end
+	
 	
 	
 endmodule
