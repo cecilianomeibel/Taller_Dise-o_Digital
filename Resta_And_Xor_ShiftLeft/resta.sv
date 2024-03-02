@@ -4,47 +4,44 @@ module resta #(parameter N = 4)(
 	output logic [N-1:0] result,
 	output logic sign);
 	
-	logic [N-1:0] bin;
-	logic [N:0] carry_num;
-	logic cin;
+	
+	logic [N-1:0] bin; // bus de bits para aplicar complemento al segundo operando (sustraendo)
+	logic [N:0] carry_num; // Almacenar el acarreo de toda la operación y determinar si el resultado es positivo o negativo según el útlimo bit
 	
 	genvar j;
-	//integer i;
 	
 	always @(*) begin
-		cin <= 1'b1;
-		carry_num [0] <= cin;
 		
-		bin <= ~B_num;
+		carry_num [0] <= 1'b1; // acarreo de entrada, necesario para la comparación con la compuerta XOR en restar
 		
-//		for (i = 0; i < N; i = i+1) begin: mult_loop1
-//			bin[i] <= B_num[i] ^ cin;
-//		
-//		end
+		bin <= ~B_num; // complemento al segundo operando (negativo)
+		
 	end
 	
-	
+	// Se realiza la resta bit por bit
 	generate
-		for (j = 0; j < N; j = j+1) begin: mult_loop2
-			restar resta_nums(.carry_num(carry_num[j+1]),.sum(result[j]),.ain(A_num[j]),.bin(bin[j]),.cin(carry_num[j]));
+		for (j = 0; j < N; j = j+1) begin: mult_loop
+			restar resta_nums(.ain(A_num[j]),.bin(bin[j]),.cin(carry_num[j]),.carry_num(carry_num[j+1]),.sub(result[j]));
 		end
 		
 	endgenerate
 	
-	assign sign = cin ^ carry_num[N];
+	// si sign es 0, resultado positivo, si sign es 1, resultado negativo.
+	assign sign = carry_num[0] ^ carry_num[N]; 
 
 	
 endmodule
 
 
 module restar(
-    output logic carry_num,
-    output logic sum,
-    input logic ain,
-    input logic bin,
-    input logic cin
+    input logic ain, // bit de primer operando
+    input logic bin,  // bit de segundo operando
+    input logic cin,  // acarreo 
+	output logic carry_num, // actualiza acarreo en cada operación bit a bit
+	output logic sub // resultado de la operación (resta)
     );
 
-    assign sum = ain ^ bin ^ cin;
+    assign sub = ain ^ bin ^ cin;
     assign carry_num = (ain & bin) | (ain & cin) | (bin & cin);
+	
 endmodule
