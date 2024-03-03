@@ -1,3 +1,4 @@
+
 module alu_raxs #(parameter N = 4)(
 	input logic [N-1:0] A_num,
 	input logic [N-1:0] B_num,
@@ -6,19 +7,13 @@ module alu_raxs #(parameter N = 4)(
 	output logic [6:0] seg2,
 	output logic [6:0] result_seg);
 	
-	logic sign, sign_resta, sign_AND, sign_XOR, sign_ShiftLeft;
-	logic [N-1:0] result, result_resta, result_AND, result_XOR,result_ShiftLeft;
-	//logic call_resta, call_AND, call_XOR, call_ShiftLeft;
-	logic [N-1:0] A_num_temp, B_num_temp;
+	logic sign_resta, sign_AND, sign_XOR, sign_ShiftLeft; // salida para bandera de cada operación (aún en proceso)
 	
-//	resta #(N) restar_nums(.A_num(A_num), .B_num(B_num),.call_resta(call_resta), .result(result_resta), .sign(sign_resta));
-//	
-//	AND_gate #(N) And_module(.A_num(A_num), .B_num(B_num),.call_AND(call_AND), .result(result_AND), .sign(sign_AND));
-//	
-//	XOR_gate #(N) Xor_module(.A_num(A_num), .B_num(B_num),.call_XOR(call_XOR), .result(result_XOR), .sign(sign_XOR));
-//	
-//	ShiftLeft_gate #(N) ShiftLeft_module(.A_num(A_num),.B_num(B_num),.call_ShiftLeft(call_ShiftLeft), .result(result_ShiftLeft), .sign(sign_ShiftLeft));
-
+	logic [N-1:0] result, result_resta, result_AND, result_XOR,result_ShiftLeft; // resultado de cada operación
+	
+	
+	// Instancias de cada operación
+	
 	resta #(N) restar_nums(.A_num(A_num), .B_num(B_num), .result(result_resta), .sign(sign_resta));
 	
 	AND_gate #(N) And_module(.A_num(A_num), .B_num(B_num), .result(result_AND), .sign(sign_AND));
@@ -28,39 +23,30 @@ module alu_raxs #(parameter N = 4)(
 	ShiftLeft_gate #(N) ShiftLeft_module(.A_num(A_num),.B_num(B_num), .result(result_ShiftLeft), .sign(sign_ShiftLeft));
 
 
-
 	always @(*) begin
 		
 			case (operation)
 				
 				4'b1110: begin // resta
-						A_num_temp <= A_num;
-						B_num_temp <= B_num;
-						//call_resta <= ~call_resta;
+						
 						result <= result_resta;
 						
 				end
 				
 				4'b1101: begin // AND
-						A_num_temp <= A_num;
-						B_num_temp <= B_num;
-						//call_resta <= ~call_AND;
+						
 						result <= result_AND;
 				
 				end
 			
 				4'b1011: begin // XOR
-						A_num_temp <= A_num;
-						B_num_temp <= B_num;
-						//call_resta <= ~call_XOR;
+						
 						result <= result_XOR;
 				
 				end
 				
 				4'b0111: begin // ShiftLeft
-						A_num_temp <= A_num;
-						B_num_temp <= B_num;
-						//call_resta <= ~call_ShiftLeft;
+						
 						result <= result_ShiftLeft;
 					
 				end
@@ -71,7 +57,8 @@ module alu_raxs #(parameter N = 4)(
 			endcase
 			
 			
-			case (A_num[3:0]) //b6543201
+			case (A_num[3:0]) 
+							  //b6543201 orden de los segmentos
 				4'h0: seg1 <= 7'b1000000; // 0
 				4'h1: seg1 <= 7'b1111001; // 1
 				4'h2: seg1 <= 7'b0100100; // 2
