@@ -10,7 +10,7 @@ module XOR_gate #(parameter N = 4)(
 	
 	always @(*) begin
 	
-		temp_out = A_num ^ B_num; // operación XOR
+		temp_out <= A_num ^ B_num; // operación XOR
 		
 		sign <= 1'b1;
 	
