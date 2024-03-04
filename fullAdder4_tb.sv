@@ -24,13 +24,13 @@ module fullAdder4_tb;
       a = 4'b0011;
       b = 4'b0101;
       Cin = 1'b0;
-      #10; 
+      #10ns; 
 
       // Establecer nuevos valores de entrada
       a = 4'b0111;
       b = 4'b1101;
       Cin = 1'b0;
-      #10; // Esperar un tiempo para la propagación
+      #10ns; // Esperar un tiempo para la propagación
   end
 
 endmodule

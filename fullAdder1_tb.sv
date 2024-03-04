@@ -8,7 +8,7 @@ module fullAdder1_tb;
     logic sum1, Cout;
 
     // Instanciar el DUT (Design Under Test)
-    fullAdder1 uut (
+    fullAdder1 dut (
         .a(a),
         .b(b),
         .Cin(Cin),

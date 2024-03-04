@@ -1,4 +1,4 @@
-module fullAdder4_tb;
+module fullAdderN_tb;
 
   // Parámetros
   parameter N = 5; // Tamaño del sumador

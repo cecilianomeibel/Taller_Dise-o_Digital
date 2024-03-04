@@ -1,4 +1,4 @@
-module fullAdder4 
+module fullAdderN 
 #(parameter N = 4) // Define el tamaño predeterminado del sumador si no se proporciona ningún otro valor
 
 
