@@ -5,15 +5,20 @@ module XOR_gate #(parameter N = 4)(
 	//input logic call_XOR,
 	output logic [N-1:0] result,
 	output logic sign);
-
+	
+	logic temp_out;
+	
 	
 	always @(*) begin
+	
+		temp_out <= A_num ^ B_num; // operación XOR
 		
-		result = A_num ^ B_num; // operación XOR
-		
-		sign = 1'b1;
+		sign <= 1'b1;
 	
 	end
+	
+	
+	assign result = temp_out;
 	
 	
 endmodule

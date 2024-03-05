@@ -95,11 +95,11 @@ module ALU_center #(parameter N = 4)(
 						
 				end
 				
-				{4'b1011, 2'b00}: begin // multiplicación  --- arrglar
+				{4'b1011, 2'b00}: begin // multiplicación
 						
 						result <= result_multipl[3:0];
 						
-						if(result_multipl[2*N-1:4] != 4'b0000) begin
+						if(result_multipl[2*N-1:4] != 0) begin
 							
 							flags <= 4'b1000; // desbordamiento
 							
@@ -108,6 +108,12 @@ module ALU_center #(parameter N = 4)(
 						else if (result_multipl == 0) begin
 						
 							flags <= 4'b0010; // resultado igual a cero
+						
+						end
+						
+						else begin
+							
+							flags <= 4'b0000; // bandera nula
 						
 						end
 											
@@ -188,7 +194,7 @@ module ALU_center #(parameter N = 4)(
 				
 				{4'b0111, 2'b01}: begin // OR
 						
-						result <= result_OR; // result_multipl > N; 
+						result <= result_OR; //
 						
 						if(result_OR == 0) begin
 						

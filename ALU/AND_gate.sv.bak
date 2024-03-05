@@ -6,13 +6,19 @@ module AND_gate #(parameter N = 4)(
 	output logic [N-1:0] result,
 	output logic sign);
 	
+	logic temp_out;
+	
 	
 	always @(*) begin
 	
-		result = A_num & B_num; // operación AND
+		temp_out <= A_num & B_num; // operación AND
 		
-		sign = 1'b1;
+		sign <= 1'b1;
 	
 	end
+	
+	
+	assign result = temp_out;
+	
 	
 	endmodule

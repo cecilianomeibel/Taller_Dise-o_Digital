@@ -103,7 +103,6 @@ set_location_assignment PIN_AG27 -to seg2[3]
 set_location_assignment PIN_AF28 -to seg2[4]
 set_location_assignment PIN_AG28 -to seg2[5]
 set_location_assignment PIN_AH28 -to seg2[6]
-set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
 set_location_assignment PIN_AD26 -to result_seg[0]
 set_location_assignment PIN_AC27 -to result_seg[1]
 set_location_assignment PIN_AD25 -to result_seg[2]
@@ -118,3 +117,4 @@ set_location_assignment PIN_AB27 -to flags_seg[3]
 set_location_assignment PIN_AB26 -to flags_seg[4]
 set_location_assignment PIN_AA26 -to flags_seg[5]
 set_location_assignment PIN_AA25 -to flags_seg[6]
+set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
