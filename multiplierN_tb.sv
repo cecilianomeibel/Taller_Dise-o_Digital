@@ -1,6 +1,6 @@
 module multiplierN_tb();
 
-       parameter N= 6;
+       parameter N= 5;
 
 			logic [N-1:0] a, b;
 			logic [(N*2)-1:0] result;
@@ -13,9 +13,20 @@ module multiplierN_tb();
 			
 			initial begin
 			     
-					a = 6'b111011;
-					b = 6'b110110;
+					a = 5'b11111;
+					b = 5'b11011;
 					#10;
+					
+					
+					a = 5'b10101;
+					b = 5'b01010;
+					#10;
+					
+					a = 5'b11001;
+					b = 5'b00110;
+					#10;
+					
+					
 			end
 endmodule
 			

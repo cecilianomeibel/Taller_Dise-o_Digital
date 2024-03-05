@@ -32,7 +32,7 @@ divider = 4'b0101; //numero 5  por 2
 
 dividend = 4'b1100;  //numero 12
 divider = 4'b0101;   //numero 5 por 2
-resto deberia ser 2
+//resto deberia ser 2
 
 #10ns;
 

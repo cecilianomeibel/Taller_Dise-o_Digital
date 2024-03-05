@@ -5,7 +5,7 @@ module fullAdderN
 (
     input logic [N-1:0] a,
     input logic [N-1:0] b,
-    input logic Cin,
+    //input logic Cin,
     output logic [N-1:0] sum,
     output logic Cout
 );
@@ -13,7 +13,7 @@ module fullAdderN
 
 // Declaración de señales internas
 logic [N:0] carry; // Vector para los acarreos internos
-assign carry[0] = Cin;
+assign carry[0] = 1'b0;
 
 // Instancias del módulo fullAdder1 para cada bit
 genvar i;
