@@ -25,34 +25,146 @@ module ALU_center_tb();
 		
 	initial begin
 	
-		A_num <= 4'b0011;
-		B_num <= 4'b0010;
-		operations_buttons <= 4'b0111; // division
+		A_num <= 4'b1011;
+		B_num <= 4'b0110;
+		operations_buttons <= 4'b1110; // Suma #1
 		change_mode <= 2'b00;
 		
-		#40
+		#2ns
+		
+		A_num <= 4'b0111;
+		B_num <= 4'b0010;
+		operations_buttons <= 4'b1110; // Suma #2
+		change_mode <= 2'b00;
+		
+		#2ns
+		
+		A_num <= 4'b1111;
+		B_num <= 4'b1111;
+		operations_buttons <= 4'b1101; // Resta #1
+		change_mode <= 2'b00;
+		
+		#2ns
+		
+		A_num <= 4'b0101;
+		B_num <= 4'b1000;
+		operations_buttons <= 4'b1101; // Resta #2
+		change_mode <= 2'b00;
+		
+		#2ns
+		
+		A_num <= 4'b0110;
+		B_num <= 4'b0010;
+		operations_buttons <= 4'b1011; // Multiplicación #1
+		change_mode <= 2'b00;
+		
+		#2ns
+		
+		A_num <= 4'b0101;
+		B_num <= 4'b0011;
+		operations_buttons <= 4'b1011; // Multiplicación #2
+		change_mode <= 2'b00;
+		
+		#2ns
 	
+		A_num <= 4'b0011;
+		B_num <= 4'b0010;
+		operations_buttons <= 4'b0111; // Division #1
+		change_mode <= 2'b00;
+		
+		#2ns
+		
+		A_num <= 4'b0000;
+		B_num <= 4'b0001;
+		operations_buttons <= 4'b0111; // Division #2
+		change_mode <= 2'b00;
+		
+		#2ns
+		
+		A_num <= 4'b0110;
+		B_num <= 4'b0011;
+		operations_buttons <= 4'b1110; // Módulo #1
+		change_mode <= 2'b01;
+		
+		#2ns
+		
+		A_num <= 4'b1001;
+		B_num <= 4'b00110;
+		operations_buttons <= 4'b1110; // Módulo #2
+		change_mode <= 2'b01;
+		
+		#2ns
+		
+		A_num <= 4'b0111;
+		B_num <= 4'b00110;
+		operations_buttons <= 4'b1101; // AND #1
+		change_mode <= 2'b01;
+		
+		#2ns
+		
+		A_num <= 4'b1111;
+		B_num <= 4'b1111;
+		operations_buttons <= 4'b1101; // AND #2
+		change_mode <= 2'b01;
+		
+		#2ns
+		
+		A_num <= 4'b1001;
+		B_num <= 4'b0111;
+		operations_buttons <= 4'b1011; // XOR #1
+		change_mode <= 2'b01;
+		
+		#2ns
+		
+		A_num <= 4'b0011;
+		B_num <= 4'b0011;
+		operations_buttons <= 4'b1011; // XOR #2
+		change_mode <= 2'b01;
+		
+		#2ns
 	
-//		A_num <= 4'b0001;
-//		B_num <= 4'b1111;
-//		operations_buttons <= 4'b1101; // resta
-//		change_mode <= 2'b00;
-//		
-//		#40
-//		
-//		A_num <= 4'b0001;
-//		B_num <= 4'b0000;
-//		operations_buttons <= 4'b0111; // OR
-//		change_mode <= 2'b01;
-//	
-//		#40
-//		
-//		A_num <= 4'b1100;
-//		B_num <= 4'b0010;
-//		operations_buttons <= 4'b1101; // ShiftRight
-//		change_mode <= 2'b10;
-//		
-//		#40
+		
+		A_num <= 4'b0001;
+		B_num <= 4'b0000;
+		operations_buttons <= 4'b0111; // OR #1
+		change_mode <= 2'b01;
+	
+		#2ns
+		
+		A_num <= 4'b1010;
+		B_num <= 4'b1010;
+		operations_buttons <= 4'b0111; // OR #2
+		change_mode <= 2'b01;
+	
+		#2ns
+		
+		A_num <= 4'b1100;
+		B_num <= 4'b0010;
+		operations_buttons <= 4'b1110; // ShiftLeft #1
+		change_mode <= 2'b10;
+		
+		#2ns
+		
+		A_num <= 4'b1010;
+		B_num <= 4'b0011;
+		operations_buttons <= 4'b1110; // ShiftLeft #2
+		change_mode <= 2'b10;
+		
+		#2ns
+		
+		A_num <= 4'b1100;
+		B_num <= 4'b0010;
+		operations_buttons <= 4'b1101; // ShiftRight #1
+		change_mode <= 2'b10;
+		
+		#2ns
+		
+		A_num <= 4'b1010;
+		B_num <= 4'b0011;
+		operations_buttons <= 4'b1101; // ShiftRight #2
+		change_mode <= 2'b10;
+		
+		#2ns
 	
 		$finish;
 		
