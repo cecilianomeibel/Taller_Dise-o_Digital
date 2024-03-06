@@ -96,7 +96,7 @@ module ALU_center_tb();
 		#2ns
 		
 		A_num <= 4'b0111;
-		B_num <= 4'b00110;
+		B_num <= 4'b0110;
 		operations_buttons <= 4'b1101; // AND #1
 		change_mode <= 2'b01;
 		
