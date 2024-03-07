@@ -1,5 +1,5 @@
 module FlipFlop1
-                #(parameter N=4)
+                #(parameter N= 4)
                 
 					(input logic clk,        // Entrada del reloj
                 input logic reset,      // Entrada de reset

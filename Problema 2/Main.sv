@@ -1,5 +1,5 @@
 module Main
-     #(parameter N = 4)
+     #(parameter N = 2)
 	 (
 	  //Se definen las entradas 	  
 	  input logic [N-1:0] A_num, B_num,operations_buttons,change_mode,
@@ -7,10 +7,10 @@ module Main
 	  
 	  //Se definen las salidas 
 	 
-      output logic [6:0] a,
+     output logic [6:0] a,
 	  output logic [6:0] b,
 	  output logic [6:0] c,
-      output logic [6:0] d
+     output logic [6:0] d
 );
 
 
