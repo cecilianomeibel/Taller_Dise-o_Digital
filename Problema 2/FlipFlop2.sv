@@ -1,6 +1,6 @@
 module FlipFlop2
 
-                #(parameter N= 4)
+                #(parameter N=4)
                (input logic clk,        // Entrada del reloj
                 input logic reset,      // Entrada de reset
                 input logic [6:0] seg1f2,      // Entrada de datos
