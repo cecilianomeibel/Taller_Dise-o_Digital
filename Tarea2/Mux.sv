@@ -7,7 +7,7 @@ module Mux (
 
 logic [7:0] temp_mant;
 
-always @* begin
+always @ (sel_state, total_mant) begin
     case(sel_state)
         1'b0: temp_mant = 8'b11111111; // Si sel_state es 0, la salida es 0xFF en binario 11111111 (señal de error)
         1'b1: temp_mant = total_mant; // Si sel_state es 1, la salida es total_mant

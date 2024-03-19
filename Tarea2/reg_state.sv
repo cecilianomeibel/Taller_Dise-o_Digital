@@ -1,11 +1,11 @@
 //Modulo que corresponde al registro de estado, recibe lo del mux
 
 module reg_state (
-       input logic [7:0] maintenance,
-		 output logic [7:0] total_mant
+       input  [7:0] maintenance,
+		 output [7:0] total
 		 
 );
 
-assign total_mant = maintenance;
+assign total = maintenance;
 
 endmodule

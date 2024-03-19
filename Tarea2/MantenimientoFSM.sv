@@ -2,20 +2,20 @@ module MantenimientoFSM (input clk, rst, m , t0,
                          output cont, rst_timer, sel_state );
 								 
 								 
-reg [1:0] state, next_state;
+logic [1:0] state, next_state;
 logic temp;
 
 //actual state logic 
-always_ff @ (posedge clk or posedge rst)
-   if (rst) state = 2'b00;
-	else 
+always_ff @ (posedge clk or posedge rst) begin
+   if (rst) begin state = 2'b00;
+	end else begin 
 	   state = next_state;	
-	 end
-	    if (state == 2'b01) temp = 1;
-		 else if (state == b'11) temp = 0;
-		 
-	    end 
-		 
+	   if (state == 2'b01) begin temp = 1;
+      end else if (state == 2'b11) begin temp = 0;
+	   end 
+	 end 
+end 	 
+
 
 		
 //next state logic 

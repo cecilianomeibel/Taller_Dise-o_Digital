@@ -12,7 +12,7 @@ module MantenimientoFSM_tb;
     logic t0 = 0;  // Entrada t0
     logic error;   // Salida error
     
-    // Instancia del modulo a probar
+    // Instancia del DUT (Design Under Test)
     MantenimientoFSM dut (
         .clk(clk),
         .rst(rst),
@@ -33,6 +33,8 @@ module MantenimientoFSM_tb;
         #20; // Espera un ciclo de reloj
         rst = 0;
         
+        // Testbench principal
+        // Cambiar las entradas para verificar diferentes escenarios
         
         // Escenario 1: m=0, t0=0
         #100; // Espera 100 unidades de tiempo

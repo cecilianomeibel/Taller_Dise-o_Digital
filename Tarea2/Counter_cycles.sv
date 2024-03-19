@@ -1,5 +1,5 @@
 module Counter_cycles (
-       input clk, rst_timer  //señal de reloj, señal de reinicio 
+       input clk, rst_timer,  //señal de reloj, señal de reinicio 
 		 output int total_cycles
 );
 
@@ -10,7 +10,7 @@ int temp_cycles = 0;
 
 always_ff @(posedge clk or posedge rst_timer) begin
 
-   if(rst) 
+   if(rst_timer) 
 	temp_cycles = 0;
 	else 
 	temp_cycles = temp_cycles + 1;
