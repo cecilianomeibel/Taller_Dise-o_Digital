@@ -15,8 +15,8 @@ module set_Color(
     parameter B_DESTRUIDO = 3'b010; //Barco destruido
     parameter D_ACERTADO  = 3'b011; //Disparo acertado
     parameter SELECTED = 3'b100;  //Posición actual
-	parameter NO_ACTIVO = 3'b101;
-	parameter LINEAS = 3'b110;
+	parameter NO_ACTIVO = 3'b101; // cuando se está en los back y front purch
+	parameter LINEAS = 3'b110; // Lineas que forman el tablero (bordes)
 	
 	logic [2:0] fila;
 	logic [2:0] columna;
@@ -466,6 +466,3 @@ module set_Color(
 	
 
 endmodule
-
-
-// Se realiza una conversión de posiciones o contador de pixeles a filas y columnas para leer la matriz de estados

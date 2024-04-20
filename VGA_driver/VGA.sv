@@ -2,10 +2,10 @@ module VGA(
 	input logic clk_FPGA,
 	input logic [2:0] jugador_tablero [4:0][4:0], // matriz de estado del tablero del jugador
 	input logic [2:0] PC_tablero [4:0][4:0],	// matriz de estado del tablero del PC
-	output logic [7:0] R, G, B;
-	output logic horiz_sync, vert_sync;
-	output logic clkVGA;
-	output logic vga_blank, vga_sync;
+	output logic [7:0] r, g, b,
+	output logic horiz_sync, vert_sync,
+	output logic clkVGA,
+	output logic vga_blank, vga_sync
 	);
 	
 	parameter HACTIVE = 10'd640;
@@ -47,5 +47,9 @@ module VGA(
 		.vga_sync(vga_sync),
 	);
 	
+	mux_color mutiplexor_color(.clkVGA(clkVGA), .selector_color(selector_color),.r(r),.g(g),.b(b));
+	
+
+endmodule
 
 endmodule

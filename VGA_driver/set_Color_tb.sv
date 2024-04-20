@@ -60,7 +60,6 @@ module set_Color_tb();
 		
 		PC_tablero[2][1] = SELECTED;
 		
-		
 		#10
 		$finish;
 		
