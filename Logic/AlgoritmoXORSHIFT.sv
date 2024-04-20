@@ -1,4 +1,4 @@
-module XORSHIFT(
+module AlgoritmoXORSHIFT(
     input logic clk,   // Señal de reloj
     input logic reset, // Señal de reinicio
     output logic [31:0] random_number // Número pseudoaleatorio generado
