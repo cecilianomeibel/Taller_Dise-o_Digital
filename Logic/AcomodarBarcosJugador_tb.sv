@@ -1,5 +1,5 @@
 `timescale 1ns / 1ps
-module AcomodarBarcos_tb;
+module AcomodarBarcosJugador_tb;
 
     // Parámetros
     parameter CLK_PERIOD = 10; // Periodo de reloj en unidades de tiempo
@@ -18,7 +18,7 @@ module AcomodarBarcos_tb;
     int matrizTempJ [4:0][4:0];
 
     // Instancia del módulo bajo prueba
-    AcomodarBarcos dut (
+    AcomodarBarcosJugador dut (
 		  .clk(clk),
 		  .reset(reset),
         .colocar(colocar),

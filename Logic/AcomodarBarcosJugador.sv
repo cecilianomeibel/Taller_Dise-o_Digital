@@ -1,4 +1,4 @@
-module AcomodarBarcos (
+module AcomodarBarcosJugador (
 	 input logic clk,
 	 input logic reset,
     input logic colocar,						//Señal que indica que se quiere colocar el barco en la posicion dada (botón)
