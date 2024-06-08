@@ -1,5 +1,5 @@
 # Se ingresa el texto a procesar 
-texto = list("Mariposa.\n")
+texto = list("Mariposa,leon,elefante,caballo.\n")
 fin_texto = len(texto)
 num_vocales = 4
 
