@@ -1,34 +1,38 @@
-module mux_color (clk, selector, display);
-	input logic clk;
-	input logic [2:0] selector;
-	output logic [23:0] display;
+
+module mux_color (
+	input logic [1:0] selector_color,
+	output logic [23:0] display
+);
 	
 	//Colores
-	logic [23:0] lineas, fondo, sprit, pru;
+	logic [23:0] fondo, letras, simbolo;
 	
-	assign fondo [7:0] = 8'h00000000;
-	assign fondo [15:8] = 8'h00000000;
-	assign fondo [23:16] = 8'h004169E1;
+	assign fondo [7:0] = 8'h00000000;   // R
+	assign fondo [15:8] = 8'h00000000;  // G
+	assign fondo [23:16] = 8'h00000000; // B
 	
-	assign lineas [7:0] = 8'h55FFFFFF;
-	assign lineas [15:8] = 8'h55FFFFFF;
-	assign lineas [23:16] = 8'h55FFFFFF;
+	assign letras [7:0] = 8'hFFFFFFFF;   // R
+	assign letras [15:8] = 8'hFFFFFFFF;  // G
+	assign letras [23:16] = 8'hFFFFFFFF; // B
 	
-	assign sprit [7:0] = 8'h00000000;
-	assign sprit [15:8] = 8'h00000000;
-	assign sprit [23:16] = 8'h00000000;
+	assign simbolo [7:0] = 8'hFFFFFFFF;   // R
+	assign simbolo [15:8] = 8'h00000000;  // G
+	assign simbolo [23:16] = 8'h00000000; // B
 	
-	assign pru [7:0] = 8'h00000000;
-	assign pru [15:8] = 8'h00000000;
-	assign pru [23:16] = 8'h00000000;
-	
-	always @(posedge clk)  begin
-		case(selector)
-			3'b000: display = fondo;
-			3'b001: display = pru;
-			3'b010: display = lineas;
-			3'b011: display = sprit;
-			3'b110: display = lineas;
+	always @(*)  begin
+		case(selector_color)
+			2'b00: begin
+				display <= fondo;
+			end
+			2'b01: begin
+				display <= letras;
+			end
+			2'b10: begin
+				display <= simbolo;
+			end
+			default: begin
+				display <= fondo;
+			end
 		endcase
 	end
 endmodule 
