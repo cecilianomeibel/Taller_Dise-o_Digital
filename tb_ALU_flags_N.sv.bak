@@ -4,7 +4,7 @@ module tb_ALU_flags_N;
 
     // Señales de prueba
     logic A_msb, B_msb;
-    logic [2:0] ALUControl;
+    logic [1:0] ALUControl;
     logic [N-1:0] result;
     logic Sum_msb;
     logic result_MSB;

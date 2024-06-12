@@ -7,7 +7,7 @@ module imem
 	logic [31:0] ROM[255:0];
 	
 	initial
-		$readmemh("C:/Users/carlo/Documents/ProyectoFinalTDD/inst_mem_init.dat",ROM);
+		$readmemh("inst_mem_init.dat",ROM);
 	
 	assign rd = ROM[a[31:2]]; 	// Lee el dato en la direccion alineada "a",
 										// se alinea por comodidad de trabajar de 4 en 4

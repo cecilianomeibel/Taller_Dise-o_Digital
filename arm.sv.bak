@@ -13,7 +13,7 @@ module arm
 	logic [1:0] RegSrc, ImmSrc;
 	logic [2:0] ALUControl;
 	
-	controller control_unit
+	CONTROL_UNIT control_unit
 	(
 		clk, rst,
 		Instr[31:28],
@@ -26,7 +26,7 @@ module arm
 		PCSrc, RegWrite, MemWrite
 	);
 					
-	datapath datapath_unit
+	DATAPATH_UNIT datapath_unit
 	(
 		clk, reset, start,
 		RegSrc, RegWrite, ImmSrc,

@@ -23,32 +23,32 @@ module datapath
 	// ---------------------- PC --------------------------
 	
 	// MUX PARA SELECCIONAR EL PROXIMO PC (PC+4) O (BRANCH)
-	mux2 #(32) MUX21_PC(PCPlus4, result, PCSrc, PC_NEXT);
+	MUX_21 #(32) MUX21_PC(PCPlus4, result, PCSrc, PC_NEXT);
 	
 	// REGISTRO PARA EL PC
-	flopr REG_PC(clk, reset, start, PC_NEXT, PC);
+	PC_REG REG_PC(clk, reset, start, PC_NEXT, PC);
 	
 	// SUMADOR PARA EL PC+4
-	adder ADDER_PC4(PC, 32'b100, PCPlus4);
+	ADDER ADDER_PC4(PC, 32'b100, PCPlus4);
 	
 	// SUMADOR PARA EL PC+8
-	adder ADDER_PC8(PCPlus4, 32'b100, PCPlus8);
+	ADDER ADDER_PC8(PCPlus4, 32'b100, PCPlus8);
 	
 	// ------------------- REGISTER FILE--------------------
 	
-	mux2 #(4) MUX21_RA1(Instr[19:16], 4'b1111, RegSrc[0], RA1);
+	MUX_21 #(4) MUX21_RA1(Instr[19:16], 4'b1111, RegSrc[0], RA1);
 	
-	mux2 #(4) MUX21_RA2(Instr[3:0], Instr[15:12], RegSrc[1], RA2);
+	MUX_21 #(4) MUX21_RA2(Instr[3:0], Instr[15:12], RegSrc[1], RA2);
 	
-	regfile REG_FILE(clk, RegWrite, RA1, RA2, Instr[15:12], result, PCPlus8,SrcA, WriteData);
+	REGISTER_FILE REG_FILE(clk, RegWrite, RA1, RA2, Instr[15:12], result, PCPlus8,SrcA, WriteData);
 					
-	mux2 #(32) MUX21_RESULT(ALUResult, ReadData, MemtoReg, result);
+	MUX_21 #(32) MUX21_RESULT(ALUResult, ReadData, MemtoReg, result);
 	
-	extend EXTENDER(Instr[23:0], ImmSrc, ExtImm);
+	EXTEND EXTENDER(Instr[23:0], ImmSrc, ExtImm);
 	
 	// ------------------- ALU -------------------------------
 	
-	mux2 #(32) MUX_21_SRC_B(WriteData, ExtImm, ALUSrc, SrcB);
+	MUX_21 #(32) MUX_21_SRC_B(WriteData, ExtImm, ALUSrc, SrcB);
 	
 	ALU #(32) ALU_(SrcA, SrcB, ALUControl, ALUResult, ALUFlags);
 	

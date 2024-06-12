@@ -3,7 +3,7 @@ module ALU_flags_N #(
 ) (
     input logic A_msb,                      // MSB del primer operando
     input logic B_msb,                      // MSB del segundo operando
-    input logic [2:0] ALUControl,           // Selector
+    input logic [1:0] ALUControl,           // Selector
     input logic [N-1:0] result,             // Resultado final elegido
     input logic Sum_msb,                    // MSB del resultado del sumador
     input logic result_MSB,                 // MSB del resultado final elegido

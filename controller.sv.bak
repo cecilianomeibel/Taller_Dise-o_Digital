@@ -1,6 +1,7 @@
 module controller
 (
 	input logic clk, rst,
+	// Instruction [31:20] = Decoding bits (no register and src bits)
 	input logic [3:0] Cond,
 	input logic [1:0] Op,
 	input logic [5:0] Funct,
@@ -43,7 +44,54 @@ module controller
 			default: signals = 10'd0;
 			
 		endcase
+	
+	// Señales
+	
+	// RegSrc: señal de seleccion de los dos mux que entran al banco de registros.
+					// El LSB (ra1mux): selecciona entre RN y "15" (pc)
+					// El MSB (ra2mux): selecciona entre RM y RD
+					
+	//	ImmSrc: señal del extensor:
+					// 00: 8-bit unsigned immediate
+					// 01: 12-bit unsigned immediate
+					// 10. 24-bit two's complement shifted branch
+					
+	// ALUSrc: señal de seleccion de la entrada B del ALU.
+					// 0: selecciona el registro RD2.
+				   // 1: selecciona el immediato exentedido.
+	
+	// MemtoReg: señal del mux que selecciona entre el resultado de la ALU o el dato leido de mem.
+					// 0: ALURESULT
+					// 1: ReadData (mem)
+	
+	// RegW: enable para escribir en el banco de registros
+	
+	// MemW: enable para escribir en la memoria
+	
+	// Branch: bandera del branch, se utiliza para definir el PCSrc (al final esta el assign)
+	
+	// ALUOp: bandera para indicar  si se necesita la ALU, con esta se define el valor de
+	// ALUControl, abajo esta el decoder.
+	
 		
+	//	CMP IMMEDIATE
+	//			00			00			1			0		  0     0     0      1
+	//	CMP REGISTER			
+	//			00			00			0			0		  0	  0	  0		1
+	// Data-processing immediate
+	//			00			00			1			0	  	  1	  0	  0		1		
+	// Data-processing register
+	// 		00			00			0			0		  1	  0	  0		1		
+	// LDR
+	//			00			01			1			1		  1	  0	  0		0		
+	// LDRB
+	//			00			01			1			1		  1	  0	  0	   0		
+	// STR
+	// 		10			01			1			1		  0	  1	  0		0		
+	// STRB
+	//			10			01			1			1		  0	  1	  0		0		
+	// B
+	// 		01			10			1			0		  0	  0	  1		0		
 	assign {RegSrc, ImmSrc, ALUSrc, MemtoReg, RegW, MemW, Branch, ALUOp} = signals;
 	
 
@@ -66,6 +114,11 @@ module controller
 			ALUControl 	= 3'b000; 	// ADD para las instrucciones tipo MEM
 			UpdateFlag 	= 1'b0; 		// No se actualizan las banderas
 		end
+
+	
+	
+	///////////////////////////////////////////////////////////////////////////////////////
+	////////////////// CONDITIONAL CONTROLLER (FLAGS MANAGMENT) ///////////////////////////
 	
 	logic CondResult;
 	logic Zero;
@@ -73,7 +126,7 @@ module controller
 	
 	// Registro que guarda el valor de la bandera de cero
 	// Solo se escribe cuando se cumple el FlagWriteEnable
-	flopenr zeroFlagReg(clk, reset, FlagWriteEnable, ALUFlags[2], Zero); // bandera Z
+	REGISTER_FF_E zeroFlagReg(clk, reset, FlagWriteEnable, ALUFlags[2], Zero); // bandera Z
 		
 	
 	

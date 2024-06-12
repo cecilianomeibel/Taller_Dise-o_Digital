@@ -6,9 +6,9 @@ module dmem
 	output logic [31:0] rd
 );
 	
-	initial $readmemh("C:/Users/carlo/Documents/ProyectoFinalTDD/data_mem_init.dat",RAM);
+	initial $readmemh("data_mem_init.dat",RAM);
 	
-	logic [31:0] RAM[700:0];
+	logic [31:0] RAM[255:0];
 	
 	always_ff @(posedge clk) begin
 		if (we) RAM[a[13:2]] <= wd;
