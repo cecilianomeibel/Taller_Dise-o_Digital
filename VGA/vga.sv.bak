@@ -1,5 +1,6 @@
 module vga(
 	input logic clk_fpga,
+	input logic reset,
 	output logic vgaclk,
 	output logic hsync,
 	output logic vsync,
@@ -16,8 +17,13 @@ module vga(
 	
 	logic [23:0] display;
 	
+	
 	// Se crea el divisor de frecuencia
-	clockDivider vgapll(.clk(clk_fpga),.vgaclk(vgaclk));
+	clockDivider vgapll(
+		.clk(clk_fpga),
+		.reset(reset),
+		.vgaclk(vgaclk)
+	);
 	
 	// Generador monitor de señales
 	vgaController controladorVGA(
@@ -32,11 +38,9 @@ module vga(
 	
 	// Generador de video (colocar el codigo del selector de color)
 	set_Color videoGen(
-		.counter_X(horiz_count),
-		.counter_Y(counterH),
-		.selector_color(selector_color),
-		.vga_blank(vga_blank),
-		.vga_sync(vga_sync)
+		.counter_X(counterH),
+		.counter_Y(counterV),
+		.selector_color(selector_color)
 	);
 	
 	mux_color muxColor(clkVGA, selector_color, display);
@@ -46,3 +50,7 @@ module vga(
 	assign	b = display [23:16];
 	
 endmodule
+
+
+
+	

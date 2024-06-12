@@ -29,8 +29,9 @@ module vgaController(
 		
 			counteH = 0;
 			counterV++;
-			if (counterV == VMAX) 
+			if (counterV == VMAX) begin
 				counterVQ = 0;
+			end
 		end
 		
 	end
